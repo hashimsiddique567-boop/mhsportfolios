@@ -655,6 +655,135 @@ function Portfolio() {
         }
 
         @media(max-width:900px){
+  .container{
+    width:92%;
+  }
+
+  nav{
+    position:relative;
+    top:0;
+    flex-direction:column;
+    gap:18px;
+    border-radius:28px;
+    padding:20px;
+  }
+
+  nav div:last-child{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+  }
+
+  nav a{
+    margin:0;
+    font-size:12px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+    padding:45px 0;
+    gap:35px;
+  }
+
+  h1{
+    font-size:48px;
+    line-height:1;
+  }
+
+  h2{
+    font-size:42px;
+  }
+
+  .text,
+  .aboutText{
+    font-size:17px;
+  }
+
+  .photoBox{
+    max-width:420px;
+    margin:auto;
+  }
+
+  section{
+    padding:60px 0;
+  }
+
+  .glass{
+    padding:25px;
+    border-radius:24px;
+  }
+
+  .skillsWrap{
+    gap:10px;
+  }
+
+  .skillChip{
+    padding:12px 16px;
+    font-size:14px;
+  }
+
+  .projectGrid{
+    grid-template-columns:1fr;
+  }
+
+  .projectCard img{
+    height:230px;
+  }
+
+  .contact{
+    grid-template-columns:1fr;
+  }
+
+  .modal{
+    width:96vw;
+    padding:20px;
+  }
+
+  .modalHeader{
+    flex-direction:column;
+  }
+
+  .modalGallery{
+    grid-template-columns:1fr;
+  }
+
+  .modalGallery img{
+    height:auto;
+    max-height:70vh;
+  }
+
+  .bigImageBox img{
+    max-width:92vw;
+    max-height:75vh;
+  }
+
+  .imageArrow{
+    width:48px;
+    height:48px;
+    font-size:38px;
+  }
+
+  .leftArrow{
+    left:10px;
+  }
+
+  .rightArrow{
+    right:10px;
+  }
+
+  .imageTopBar{
+    top:10px;
+    gap:8px;
+  }
+
+  .bigImageClose,
+  .imageCounter{
+    padding:10px 14px;
+    font-size:12px;
+  }
+}
           .hero,.contact{
             grid-template-columns:1fr;
           }
