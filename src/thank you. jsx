@@ -1,0 +1,67 @@
+export default function ThankYou() {
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background:
+          "linear-gradient(135deg,#020016,#090026,#001f3f,#29003f)",
+        color: "white",
+        padding: "30px"
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "800px",
+          padding: "50px",
+          borderRadius: "30px",
+          background: "rgba(255,255,255,.07)",
+          border: "1px solid rgba(255,255,255,.15)",
+          backdropFilter: "blur(20px)",
+          textAlign: "center",
+          boxShadow:
+            "0 0 40px #00e5ff,0 0 80px rgba(255,0,204,.3)"
+        }}
+      >
+        <div
+          style={{
+            color:"#ff4fd8",
+            letterSpacing:"4px",
+            marginBottom:"10px",
+            fontWeight:"900"
+          }}
+        >
+          MESSAGE SENT
+        </div>
+
+        <h1 style={{fontSize:"64px", marginBottom:"20px"}}>
+          Thank You
+        </h1>
+
+        <p style={{color:"#d4d4e2", lineHeight:"1.8"}}>
+          Thank you for getting in touch. I have received your message
+          and will reply as soon as possible.
+        </p>
+
+        <a
+          href="/"
+          style={{
+            display:"inline-block",
+            marginTop:"30px",
+            padding:"18px 35px",
+            borderRadius:"16px",
+            textDecoration:"none",
+            fontWeight:"900",
+            background:
+            "linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900)",
+            color:"white"
+          }}
+        >
+          BACK TO HOME
+        </a>
+      </div>
+    </div>
+  );
+}
