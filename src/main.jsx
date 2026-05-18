@@ -1029,8 +1029,9 @@ function Portfolio() {
           <div className="bigImageBox" onClick={(e) => e.stopPropagation()}>
             <div className="imageTopBar">
               <button className="bigImageClose" onClick={() => setSelectedImage(null)}>
-                CLOSE IMAGE
-              </button>
+  ✕
+</button>
+              
 
               <div className="imageCounter">
                 {currentIndex + 1} / {selectedProject.images.length}
