@@ -603,15 +603,16 @@ function Portfolio() {
           box-shadow:0 0 80px #00e5ff,0 0 160px #ff00cc;
         }
 
-        .imageTopBar{
-          position:absolute;
-          top:20px;
-          left:50%;
-          transform:translateX(-50%);
-          display:flex;
-          align-items:center;
-          gap:18px;
-          z-index:1001;
+        {
+         .imageTopBar{
+  position:fixed;
+  top:25px;
+  right:25px;
+  z-index:100000;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
         }
 
         .imageCounter{
@@ -778,11 +779,21 @@ function Portfolio() {
     gap:8px;
   }
 
-  .bigImageClose,
-  .imageCounter{
-    padding:10px 14px;
-    font-size:12px;
-  }
+ .bigImageClose{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(135deg,#00e5ff,#ff00cc,#ff9900);
+  color:white;
+  font-size:30px;
+  font-weight:900;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
+}
 }
           .hero,.contact{
             grid-template-columns:1fr;
