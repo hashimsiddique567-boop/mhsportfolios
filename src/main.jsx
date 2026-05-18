@@ -414,7 +414,7 @@ function Portfolio() {
         }
 
         .skillChip:hover{
-          transform:translateY(-8px);
+          
           box-shadow:0 0 30px rgba(0,229,255,.3),0 0 45px rgba(255,0,204,.25);
         }
 
@@ -437,7 +437,7 @@ function Portfolio() {
         }
 
         .projectCard:hover{
-          transform:translateY(-8px);
+          
           box-shadow:0 0 45px #00e5ff,0 0 85px #ff00cc;
         }
 
@@ -1002,7 +1002,7 @@ function Portfolio() {
               </div>
 
               <button className="closeBtn" onClick={() => setSelectedProject(null)}>
-                CLOSE
+                X
               </button>
             </div>
 
