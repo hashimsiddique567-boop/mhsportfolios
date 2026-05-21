@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 
@@ -27,6 +26,7 @@ const projects = [
     problem: "The design challenge was to create an adjustable lamp that could be positioned easily while remaining stable and practical for everyday use.",
     process: "I developed the lamp through CAD modelling, component design, assembly planning and technical drawings. I considered movement, stability and how the parts could be manufactured.",
     learned: "This project improved my understanding of assemblies, movement mechanisms, component relationships and designing products with real use in mind.",
+    outcomes: ["Improved assembly skills", "Produced technical drawings", "Designed moving components"],
   },
   {
     title: "Adjustable Phone Stand",
@@ -51,6 +51,7 @@ const projects = [
     problem: "The aim was to design a practical phone stand that could support a phone at different viewing angles while staying strong and stable.",
     process: "I created CAD parts, tested the shape and structure, developed the assembly and produced drawings showing how the product would work.",
     learned: "This helped improve my CAD modelling, product design thinking and understanding of simple adjustable mechanisms.",
+    outcomes: ["Developed adjustable mechanism thinking", "Improved component modelling", "Strengthened product design skills"],
   },
   {
     title: "Piano Stool & Hinge CAD Design",
@@ -76,6 +77,7 @@ const projects = [
     problem: "The challenge was to design a folding stool mechanism that could move correctly, support weight and remain practical to manufacture.",
     process: "I focused on the hinge mechanism, component relationships, foldable movement and the structural design of the stool.",
     learned: "This improved my understanding of hinge design, mechanical movement, assemblies and product function.",
+    outcomes: ["Improved hinge design understanding", "Designed foldable movement", "Built confidence with assemblies"],
   },
   {
     title: "Engineering Design Problem Solutions",
@@ -100,10 +102,24 @@ const projects = [
     problem: "This work focused on solving design problems by identifying weaknesses and improving the product through redesign.",
     process: "I used sketches, CAD modelling, testing ideas and optimisation to develop better engineering solutions.",
     learned: "This strengthened my problem-solving, creative thinking and ability to improve designs based on practical requirements.",
+    outcomes: ["Improved redesign thinking", "Tested ideas against requirements", "Strengthened engineering problem solving"],
   },
 ];
 
 function Portfolio() {
+  useEffect(() => {
+    document.title = "MHS Engineering Portfolio";
+
+    const favicon = document.querySelector("link[rel='icon']") || document.createElement("link");
+    favicon.rel = "icon";
+    favicon.href = "/favicon.png";
+    document.head.appendChild(favicon);
+
+    const metaDescription = document.querySelector("meta[name='description']") || document.createElement("meta");
+    metaDescription.name = "description";
+    metaDescription.content = "Mohammad Hashim Siddique mechanical engineering portfolio featuring CAD design, technical drawings and product development projects.";
+    document.head.appendChild(metaDescription);
+  }, []);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -414,6 +430,28 @@ function Portfolio() {
           margin-bottom:8px;
         }
 
+        .softwareRow{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+          gap:18px;
+          margin-top:30px;
+        }
+
+        .softwareCard{
+          padding:24px;
+          border-radius:26px;
+          background:rgba(255,255,255,.07);
+          border:1px solid rgba(255,255,255,.14);
+          box-shadow:0 0 28px rgba(0,229,255,.14);
+          font-weight:900;
+        }
+
+        .softwareIcon{
+          font-size:32px;
+          display:block;
+          margin-bottom:12px;
+        }
+
         .btn,.sendEmail{
           display:inline-block;
           padding:18px 35px;
@@ -704,6 +742,47 @@ function Portfolio() {
           font-weight:900;
         }
 
+        .timeline{
+          display:grid;
+          gap:18px;
+          margin-top:30px;
+        }
+
+        .timelineItem{
+          display:grid;
+          grid-template-columns:130px 1fr;
+          gap:20px;
+          padding:24px;
+          border-radius:26px;
+          background:rgba(255,255,255,.07);
+          border:1px solid rgba(255,255,255,.14);
+          box-shadow:0 0 26px rgba(0,229,255,.12);
+        }
+
+        .timelineYear{
+          color:#00e5ff;
+          font-weight:900;
+        }
+
+        .timelineText{
+          color:#d4d4e2;
+          line-height:1.65;
+        }
+
+        .outcomeList{
+          margin-top:18px;
+          display:grid;
+          gap:10px;
+        }
+
+        .outcomeItem{
+          color:#d4d4e2;
+          padding:12px 14px;
+          border-radius:14px;
+          background:rgba(255,255,255,.06);
+          border:1px solid rgba(255,255,255,.1);
+        }
+
         .bigImageOverlay{
           z-index:1000;
         }
@@ -915,6 +994,10 @@ function Portfolio() {
             padding:10px 14px;
             font-size:12px;
           }
+
+          .timelineItem{
+            grid-template-columns:1fr;
+          }
         }
       `}</style>
 
@@ -1030,6 +1113,40 @@ function Portfolio() {
             <div className="skillChip">Workshop Skills</div>
             <div className="skillChip">Problem Solving</div>
           </div>
+
+          <div className="softwareRow">
+            <div className="softwareCard"><span className="softwareIcon">⚙️</span>SolidWorks CAD</div>
+            <div className="softwareCard"><span className="softwareIcon">📐</span>Technical Drawings</div>
+            <div className="softwareCard"><span className="softwareIcon">🧩</span>Assemblies</div>
+            <div className="softwareCard"><span className="softwareIcon">🛠️</span>Workshop Skills</div>
+          </div>
+        </section>
+
+        <section id="timeline">
+          <div className="sectionLabel">Progression</div>
+          <h2>Engineering Timeline</h2>
+
+          <div className="timeline">
+            <div className="timelineItem">
+              <div className="timelineYear">2023</div>
+              <div className="timelineText">Started Level 3 Engineering and began developing stronger workshop, safety and technical knowledge.</div>
+            </div>
+
+            <div className="timelineItem">
+              <div className="timelineYear">2024</div>
+              <div className="timelineText">Built confidence with CAD modelling, engineering drawings and practical design tasks.</div>
+            </div>
+
+            <div className="timelineItem">
+              <div className="timelineYear">2025</div>
+              <div className="timelineText">Developed CAD portfolio projects including the adjustable lamp, phone stand, piano stool and design problem solutions.</div>
+            </div>
+
+            <div className="timelineItem">
+              <div className="timelineYear">Now</div>
+              <div className="timelineText">Seeking a Mechanical Engineering Apprenticeship to build industry experience and learn from experienced engineers.</div>
+            </div>
+          </div>
         </section>
 
         <section id="projects">
@@ -1089,7 +1206,9 @@ function Portfolio() {
                 <strong>Email:</strong><br />
                 hashimsiddique567@gmail.com<br /><br />
                 <strong>Location:</strong><br />
-                Chorley, Lancashire — UK
+                Chorley, Lancashire — UK<br /><br />
+                <strong>Response Time:</strong><br />
+                Usually within 24–48 hours
               </p>
             </div>
 
@@ -1177,6 +1296,15 @@ function Portfolio() {
               <div className="caseBox">
                 <h3>What I Learned</h3>
                 <p>{selectedProject.learned}</p>
+              </div>
+
+              <div className="caseBox">
+                <h3>Project Outcomes</h3>
+                <div className="outcomeList">
+                  {selectedProject.outcomes.map((outcome) => (
+                    <div className="outcomeItem" key={outcome}>✓ {outcome}</div>
+                  ))}
+                </div>
               </div>
             </div>
 
