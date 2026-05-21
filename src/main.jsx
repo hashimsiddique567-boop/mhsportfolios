@@ -1,11 +1,16 @@
 
-   import React, { useEffect, useState } from "react";
+ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
 const projects = [
   {
-    title: "Adjustable Lamp CAD Design",
+    title: "Adjustable Lamp",
     image: "/lamp/lamp-render.webp",
+    tag: "CAD",
+    hours: "18 Hours",
+    type: "Individual",
+    desc: "Design and assembly of an adjustable lamp with moving components.",
+    points: ["Improved assembly skills", "Created technical drawings", "Functional adjustable design"],
     images: [
       "/lamp/lamp-render.webp",
       "/lamp/2.avif",
@@ -17,21 +22,15 @@ const projects = [
       "/lamp/8.avif",
       "/lamp/9.avif",
     ],
-    tag: "SolidWorks • Assembly • Technical Drawings",
-    desc: "Adjustable desk lamp CAD project including 3D modelling, assembly design, technical drawings and manufacturability.",
-    stats: ["18+ Hours", "9 CAD Images", "Assembly Design", "Technical Drawings"],
-    tools: "SolidWorks • CAD Assemblies • Technical Drawings",
-    time: "18+ hours",
-    challenge: "Creating smooth adjustability while keeping the lamp stable and realistic to manufacture.",
-    sheet: "/project-sheets/adjustable-lamp.pdf",
-    problem: "The design challenge was to create an adjustable lamp that could be positioned easily while remaining stable and practical for everyday use.",
-    process: "I developed the lamp through CAD modelling, component design, assembly planning and technical drawings. I considered movement, stability and how the parts could be manufactured.",
-    learned: "This project improved my understanding of assemblies, movement mechanisms, component relationships and designing products with real use in mind.",
-    outcomes: ["Improved assembly skills", "Produced technical drawings", "Designed moving components"],
   },
   {
-    title: "Adjustable Phone Stand",
+    title: "Phone Stand",
     image: "/phone-stand/phone-render.avif",
+    tag: "CAD",
+    hours: "12 Hours",
+    type: "Individual",
+    desc: "Ergonomic phone stand designed for stability and manufacturability.",
+    points: ["Strengthened CAD skills", "Optimised for stability", "Practical everyday use"],
     images: [
       "/phone-stand/phone-render.avif",
       "/phone-stand/2.avif",
@@ -42,21 +41,15 @@ const projects = [
       "/phone-stand/7.avif",
       "/phone-stand/8.avif",
     ],
-    tag: "CAD Design • Mechanism • PLA Parts",
-    desc: "Adjustable phone stand with component modelling, assembly development and engineering drawings.",
-    stats: ["Adjustable Mechanism", "8 CAD Images", "Product Design", "CAD Parts"],
-    tools: "SolidWorks • Product Design • CAD Components",
-    time: "12+ hours",
-    challenge: "Making the stand adjustable while keeping it strong enough to support a phone securely.",
-    sheet: "/project-sheets/phone-stand.pdf",
-    problem: "The aim was to design a practical phone stand that could support a phone at different viewing angles while staying strong and stable.",
-    process: "I created CAD parts, tested the shape and structure, developed the assembly and produced drawings showing how the product would work.",
-    learned: "This helped improve my CAD modelling, product design thinking and understanding of simple adjustable mechanisms.",
-    outcomes: ["Developed adjustable mechanism thinking", "Improved component modelling", "Strengthened product design skills"],
   },
   {
-    title: "Piano Stool & Hinge CAD Design",
+    title: "Piano Stool",
     image: "/piano-stool/stool-render.avif",
+    tag: "CAD",
+    hours: "15 Hours",
+    type: "Individual",
+    desc: "Piano stool with scissor mechanism for adjustable height.",
+    points: ["Mechanism design", "Smooth movement", "Strong stable structure"],
     images: [
       "/piano-stool/stool-render.avif",
       "/piano-stool/2.avif",
@@ -68,76 +61,18 @@ const projects = [
       "/piano-stool/8.avif",
       "/piano-stool/9.avif",
     ],
-    tag: "Hinge Mechanism • Product Design",
-    desc: "Foldable piano stool and hinge mechanism with detailed CAD development and manufacturing considerations.",
-    stats: ["Hinge Design", "9 CAD Images", "Folding Mechanism", "Assembly Work"],
-    tools: "SolidWorks • Hinge Design • Assembly Modelling",
-    time: "16+ hours",
-    challenge: "Designing the hinge movement so the stool could fold correctly while staying practical.",
-    sheet: "/project-sheets/piano-stool.pdf",
-    problem: "The challenge was to design a folding stool mechanism that could move correctly, support weight and remain practical to manufacture.",
-    process: "I focused on the hinge mechanism, component relationships, foldable movement and the structural design of the stool.",
-    learned: "This improved my understanding of hinge design, mechanical movement, assemblies and product function.",
-    outcomes: ["Improved hinge design understanding", "Designed foldable movement", "Built confidence with assemblies"],
-  },
-  {
-    title: "Engineering Design Problem Solutions",
-    image: "/design-problems/problem-overview.avif",
-    images: [
-      "/design-problems/problem-overview.avif",
-      "/design-problems/2.avif",
-      "/design-problems/3.avif",
-      "/design-problems/4.avif",
-      "/design-problems/5.avif",
-      "/design-problems/6.avif",
-      "/design-problems/7.avif",
-      "/design-problems/8.avif",
-    ],
-    tag: "Problem Solving • Optimisation • Testing",
-    desc: "Engineering design challenge work involving concept sketches, CAD modelling, redesign, optimisation and validation.",
-    stats: ["Problem Solving", "8 CAD Images", "Redesign", "Testing Ideas"],
-    tools: "Concept Sketching • CAD Redesign • Optimisation",
-    time: "10+ hours",
-    challenge: "Identifying design weaknesses and improving the solution through practical redesign.",
-    sheet: "/project-sheets/design-problems.pdf",
-    problem: "This work focused on solving design problems by identifying weaknesses and improving the product through redesign.",
-    process: "I used sketches, CAD modelling, testing ideas and optimisation to develop better engineering solutions.",
-    learned: "This strengthened my problem-solving, creative thinking and ability to improve designs based on practical requirements.",
-    outcomes: ["Improved redesign thinking", "Tested ideas against requirements", "Strengthened engineering problem solving"],
   },
 ];
 
 function Portfolio() {
-  useEffect(() => {
-    document.title = "MHS Engineering Portfolio";
-
-    const favicon = document.querySelector("link[rel='icon']") || document.createElement("link");
-    favicon.rel = "icon";
-    favicon.href = "/favicon.png";
-    document.head.appendChild(favicon);
-
-    const metaDescription = document.querySelector("meta[name='description']") || document.createElement("meta");
-    metaDescription.name = "description";
-    metaDescription.content = "Mohammad Hashim Siddique mechanical engineering portfolio featuring CAD design, technical drawings and product development projects.";
-    document.head.appendChild(metaDescription);
-  }, []);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [formSent, setFormSent] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const currentIndex = selectedProject?.images?.indexOf(selectedImage) ?? -1;
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleContactSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-
     const formData = new FormData(e.target);
 
     try {
@@ -146,10 +81,8 @@ function Portfolio() {
         body: formData,
         headers: { Accept: "application/json" },
       });
-
       setFormSent(true);
       e.target.reset();
-      window.location.hash = "contact";
     } catch {
       alert("Message could not send. Please email me directly.");
     }
@@ -157,1335 +90,109 @@ function Portfolio() {
     setSending(false);
   };
 
-  const showPrevImage = () => {
-    if (!selectedProject || currentIndex === -1) return;
-    const prevIndex = currentIndex === 0 ? selectedProject.images.length - 1 : currentIndex - 1;
-    setSelectedImage(selectedProject.images[prevIndex]);
-  };
-
-  const showNextImage = () => {
-    if (!selectedProject || currentIndex === -1) return;
-    const nextIndex = currentIndex === selectedProject.images.length - 1 ? 0 : currentIndex + 1;
-    setSelectedImage(selectedProject.images[nextIndex]);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!selectedImage) return;
-      if (e.key === "Escape") setSelectedImage(null);
-      if (e.key === "ArrowLeft") showPrevImage();
-      if (e.key === "ArrowRight") showNextImage();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage, selectedProject, currentIndex]);
-
-  if (loading) {
-    return (
-      <div className="loaderScreen">
-        <style>{`
-          .loaderScreen{
-            position:fixed;
-            inset:0;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:radial-gradient(circle,#00152e,#020016,#000);
-            font-family:Arial, Helvetica, sans-serif;
-          }
-
-          .loaderLogo{
-            font-size:95px;
-            font-weight:900;
-            background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-            -webkit-background-clip:text;
-            color:transparent;
-            animation:pulse 1.2s infinite;
-          }
-
-          .loaderText{
-            margin-top:20px;
-            font-size:22px;
-            color:white;
-            letter-spacing:2px;
-          }
-
-          .loaderBar{
-            width:320px;
-            height:10px;
-            margin-top:35px;
-            border-radius:999px;
-            overflow:hidden;
-            background:rgba(255,255,255,.1);
-          }
-
-          .loaderFill{
-            height:100%;
-            background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-            animation:load 1.2s linear;
-          }
-
-          @keyframes load{from{width:0}to{width:100%}}
-          @keyframes pulse{50%{transform:scale(1.06)}}
-        `}</style>
-
-        <div className="loaderLogo">MHS</div>
-        <div className="loaderText">Mohammad Hashim Siddique</div>
-        <div className="loaderBar">
-          <div className="loaderFill"></div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="site">
+    <div className="app" id="top">
       <style>{`
-        *{
-          margin:0;
-          padding:0;
-          box-sizing:border-box;
-          font-family:Arial, Helvetica, sans-serif;
-        }
-
-        html{
-          scroll-behavior:smooth;
-          overflow-x:hidden;
-        }
-
-        body{
-          background:#020016;
-          color:white;
-          overflow-x:hidden;
-        }
-
-        .scrollProgress{
-          position:fixed;
-          top:0;
-          left:0;
-          height:5px;
-          width:100%;
-          background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-          transform-origin:left;
-          animation:scrollProgress linear;
-          animation-timeline:scroll();
-          z-index:99999;
-        }
-
-        @keyframes scrollProgress{
-          from{transform:scaleX(0)}
-          to{transform:scaleX(1)}
-        }
-
-        .site{
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
+        html{scroll-behavior:smooth;overflow-x:hidden}
+        body{background:#050b18;color:#fff;overflow-x:hidden}
+        .app{
           min-height:100vh;
-          position:relative;
           background:
-            radial-gradient(circle at 12% 18%, rgba(0,229,255,.42), transparent 30%),
-            radial-gradient(circle at 88% 12%, rgba(255,0,204,.38), transparent 30%),
-            radial-gradient(circle at 55% 95%, rgba(255,153,0,.2), transparent 38%),
-            linear-gradient(135deg,#020016,#090026,#001f3f,#29003f);
-          overflow-x:hidden;
-        }
-
-        .particles{
-          position:fixed;
-          inset:0;
-          pointer-events:none;
-          z-index:0;
-          background-image:
-            radial-gradient(circle, rgba(0,229,255,.35) 1px, transparent 1px),
-            radial-gradient(circle, rgba(255,0,204,.25) 1px, transparent 1px);
-          background-size:70px 70px,110px 110px;
-          opacity:.35;
-        }
-
-        .container{
-          width:90%;
-          position:relative;
-          z-index:1;
-          max-width:1400px;
-          margin:auto;
-        }
-
-        nav{
-          margin-top:25px;
-          display:flex;
-          justify-content:space-between;
-          align-items:center;
-          padding:24px 40px;
-          border-radius:999px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.15);
-          backdrop-filter:blur(22px);
-          box-shadow:0 0 35px rgba(0,229,255,.22),0 0 55px rgba(255,0,204,.22);
-          position:sticky;
-          top:20px;
-          z-index:10;
-        }
-
-        .logo{
-          font-size:40px;
-          font-weight:900;
-          background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-          -webkit-background-clip:text;
-          -webkit-text-fill-color:transparent;
-        }
-
-        nav a{
-          color:white;
-          text-decoration:none;
-          margin-left:28px;
-          font-weight:900;
-          font-size:13px;
-          letter-spacing:2px;
-        }
-
-        .hero{
-          min-height:90vh;
-          display:grid;
-          grid-template-columns:1fr 1fr;
-          align-items:center;
-          gap:70px;
-          padding:70px 0;
-        }
-
-        .small,.sectionLabel{
-          color:#ff4fd8;
-          letter-spacing:5px;
-          font-weight:900;
-          margin-bottom:18px;
-          text-transform:uppercase;
-          font-size:13px;
-        }
-
-        h1{
-          font-size:clamp(60px,8vw,112px);
-          line-height:.9;
-          margin-bottom:25px;
-          font-weight:900;
-        }
-
-        h2{
-          font-size:clamp(44px,5vw,70px);
-          margin-bottom:30px;
-        }
-
-        .gradient{
-          background:linear-gradient(90deg,#00e5ff,#635bff,#ff00cc,#ff9900);
-          -webkit-background-clip:text;
-          -webkit-text-fill-color:transparent;
-        }
-
-        .text,.aboutText{
-          color:#d4d4e2;
-          line-height:1.85;
-          font-size:20px;
-        }
-
-        .buttons{
-          display:flex;
-          gap:20px;
-          margin-top:35px;
-          flex-wrap:wrap;
-        }
-
-        .heroLinks{
-          display:flex;
-          gap:14px;
-          flex-wrap:wrap;
-          margin-top:22px;
-        }
-
-        .miniLink{
-          padding:12px 18px;
-          border-radius:999px;
-          color:white;
-          text-decoration:none;
-          font-weight:900;
-          border:1px solid rgba(255,255,255,.18);
-          background:rgba(255,255,255,.07);
-          box-shadow:0 0 22px rgba(0,229,255,.16);
-        }
-
-        .infoStrip{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-          gap:18px;
-          margin-top:35px;
-        }
-
-        .infoCard{
-          padding:22px;
-          border-radius:24px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.14);
-          box-shadow:0 0 28px rgba(0,229,255,.14);
-        }
-
-        .infoCard strong{
-          color:#00e5ff;
-          display:block;
-          margin-bottom:8px;
-        }
-
-        .softwareRow{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-          gap:18px;
-          margin-top:30px;
-        }
-
-        .softwareCard{
-          padding:24px;
-          border-radius:26px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.14);
-          box-shadow:0 0 28px rgba(0,229,255,.14);
-          font-weight:900;
-        }
-
-        .softwareIcon{
-          font-size:32px;
-          display:block;
-          margin-bottom:12px;
-        }
-
-        .btn,.sendEmail{
-          display:inline-block;
-          padding:18px 35px;
-          border-radius:16px;
-          text-decoration:none;
-          font-weight:900;
-          transition:.3s;
-          text-align:center;
-        }
-
-        .one,.sendEmail{
-          background:linear-gradient(90deg,#00e5ff,#8b5cf6,#ff00cc,#ff9900);
-          color:white;
-          border:none;
-          cursor:pointer;
-          box-shadow:0 0 45px rgba(255,0,204,.5);
-        }
-
-        .two{
-          border:1px solid rgba(255,255,255,.25);
-          color:white;
-          background:rgba(255,255,255,.06);
-        }
-
-        .btn:hover,.sendEmail:hover{
-          box-shadow:0 0 45px #00e5ff,0 0 70px #ff00cc;
-        }
-
-        .photoBox{
-          padding:8px;
-          border-radius:42px;
-          background:linear-gradient(45deg,#00e5ff,#ff00cc,#ff9900,#00e5ff);
-          background-size:300% 300%;
-          animation:move 6s ease infinite;
-          box-shadow:0 0 50px #00e5ff,0 0 90px #ff00cc;
-        }
-
-        .photoInner{
-          overflow:hidden;
-          border-radius:35px;
-          background:#050021;
-        }
-
-        .photoInner img{
-          width:100%;
-          display:block;
-        }
-
-        section{
-          padding:95px 0;
-        }
-
-        .glass{
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.14);
-          backdrop-filter:blur(20px);
-          border-radius:32px;
-          padding:40px;
-          box-shadow:0 0 35px rgba(0,229,255,.16),0 0 55px rgba(255,0,204,.14);
-        }
-
-        .skillsWrap{
-          display:flex;
-          flex-wrap:wrap;
-          gap:16px;
-          margin-top:30px;
-        }
-
-        .skillChip{
-          padding:16px 24px;
-          border-radius:999px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.12);
-          backdrop-filter:blur(20px);
-          font-weight:900;
-          transition:.3s;
-          box-shadow:0 0 18px rgba(0,229,255,.15);
-        }
-
-        .skillChip:hover{
-          box-shadow:0 0 30px rgba(0,229,255,.3),0 0 45px rgba(255,0,204,.25);
-        }
-
-        .projectGrid{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-          gap:26px;
-        }
-
-        .projectCard{
-          overflow:hidden;
-          border-radius:30px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.15);
-          cursor:pointer;
-          display:flex;
-          flex-direction:column;
-          animation:projectGlow 3s ease-in-out infinite;
-          transition:.25s ease;
-        }
-
-        .projectCard:hover{
-          box-shadow:0 0 45px #00e5ff,0 0 85px #ff00cc;
-        }
-
-        .projectCard img{
-          width:100%;
-          height:240px;
-          object-fit:cover;
-          display:block;
-        }
-
-        .projectText{
-          padding:24px;
-          display:flex;
-          flex-direction:column;
-          flex:1;
-        }
-
-        .tag{
-          color:#00e5ff;
-          font-size:12px;
-          font-weight:900;
-          margin-bottom:12px;
-        }
-
-        .projectText h3{
-          font-size:22px;
-          margin-bottom:12px;
-        }
-
-        .projectText p{
-          color:#d4d4e2;
-          line-height:1.65;
-          margin-bottom:18px;
-        }
-
-        .clickText{
-          margin-top:auto;
-          color:#ff4fd8;
-          font-weight:900;
-          font-size:13px;
-        }
-
-        .contact{
-          display:grid;
-          grid-template-columns:1fr 1.25fr;
-          gap:40px;
-        }
-
-        input,textarea{
-          width:100%;
-          padding:18px;
-          margin-bottom:16px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.16);
-          border-radius:16px;
-          color:white;
-          font-size:16px;
-        }
-
-        textarea{
-          height:170px;
-          resize:none;
-        }
-
-        .sendEmail{
-          width:100%;
-        }
-
-        footer{
-          text-align:center;
-          padding:40px 0;
-          color:#9b9bb0;
-        }
-
-        .modalOverlay,.bigImageOverlay{
-          position:fixed;
-          inset:0;
-          background:rgba(0,0,0,.86);
-          backdrop-filter:blur(12px);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          z-index:999;
-          padding:24px;
-        }
-
-        .modal{
-          width:min(1250px,95vw);
-          max-height:92vh;
-          overflow-y:auto;
-          border-radius:34px;
-          background:radial-gradient(circle at top left,rgba(0,229,255,.25),transparent 35%),radial-gradient(circle at top right,rgba(255,0,204,.25),transparent 35%),#08001f;
-          border:1px solid rgba(255,255,255,.18);
-          box-shadow:0 0 60px #00e5ff,0 0 120px rgba(255,0,204,.5);
-          padding:30px;
+            radial-gradient(circle at 30% 10%,rgba(168,85,247,.18),transparent 28%),
+            radial-gradient(circle at 90% 40%,rgba(0,212,255,.16),transparent 30%),
+            linear-gradient(135deg,#050b18,#071426 45%,#10081f);
           position:relative;
         }
-
-        .modalHeader{
-          display:flex;
-          justify-content:space-between;
-          gap:20px;
-          align-items:flex-start;
-          margin-bottom:28px;
+        .app:before{
+          content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;
+          background-image:radial-gradient(circle,rgba(168,85,247,.75) 1px,transparent 1px),radial-gradient(circle,rgba(0,212,255,.45) 1px,transparent 1px);
+          background-size:92px 92px,130px 130px;z-index:0
         }
-
-        .modal h2{
-          font-size:clamp(42px,6vw,86px);
-          line-height:.95;
-        }
-
-        .closeBtn{
-          min-width:52px;
-          height:52px;
-          border-radius:50%;
-          background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-          color:white;
-          border:none;
-          font-size:28px;
-          font-weight:900;
-          cursor:pointer;
-          box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
-        }
-
-        .modalGallery{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-          gap:22px;
-          margin-top:20px;
-        }
-
-        .modalGallery img{
-          width:100%;
-          height:320px;
-          object-fit:contain;
-          border-radius:22px;
-          background:white;
-          padding:12px;
-          cursor:pointer;
-          transition:.25s;
-        }
-
-        .modalGallery img:hover{
-          box-shadow:0 0 35px #00e5ff;
-        }
-
-        .caseGrid{
-          display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-          gap:18px;
-          margin-top:28px;
-        }
-
-        .caseBox{
-          padding:22px;
-          border-radius:22px;
-          background:rgba(255,255,255,.06);
-          border:1px solid rgba(255,255,255,.12);
-        }
-
-        .caseBox h3{
-          color:#00e5ff;
-          margin-bottom:10px;
-        }
-
-        .caseBox p{
-          color:#d4d4e2;
-          line-height:1.6;
-        }
-
-        .projectSheet{
-          display:inline-block;
-          margin-top:24px;
-          padding:15px 24px;
-          border-radius:16px;
-          color:white;
-          text-decoration:none;
-          font-weight:900;
-          background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-          box-shadow:0 0 35px rgba(255,0,204,.35);
-        }
-
-        .footerQuote{
-          margin-top:16px;
-          color:#00e5ff;
-          font-weight:900;
-        }
-
-        .filterBar{
-          display:flex;
-          flex-wrap:wrap;
-          gap:12px;
-          margin-bottom:30px;
-        }
-
-        .filterBtn{
-          padding:13px 20px;
-          border-radius:999px;
-          border:1px solid rgba(255,255,255,.16);
-          background:rgba(255,255,255,.07);
-          color:white;
-          font-weight:900;
-          box-shadow:0 0 18px rgba(0,229,255,.12);
-        }
-
-        .profileMiniCard{
-          display:grid;
-          grid-template-columns:90px 1fr;
-          gap:20px;
-          align-items:center;
-          padding:24px;
-          border-radius:28px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.14);
-          box-shadow:0 0 28px rgba(255,0,204,.14);
-        }
-
-        .profileMiniCard img{
-          width:90px;
-          height:90px;
-          object-fit:cover;
-          border-radius:50%;
-          border:3px solid #00e5ff;
-          box-shadow:0 0 30px rgba(0,229,255,.45);
-        }
-
-        .profileMiniCard h3{
-          font-size:26px;
-          margin-bottom:8px;
-        }
-
-        .profileMiniCard p{
-          color:#d4d4e2;
-          line-height:1.6;
-        }
-
-        .timeline{
-          display:grid;
-          gap:18px;
-          margin-top:30px;
-        }
-
-        .timelineItem{
-          display:grid;
-          grid-template-columns:130px 1fr;
-          gap:20px;
-          padding:24px;
-          border-radius:26px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.14);
-          box-shadow:0 0 26px rgba(0,229,255,.12);
-        }
-
-        .timelineYear{
-          color:#00e5ff;
-          font-weight:900;
-        }
-
-        .timelineText{
-          color:#d4d4e2;
-          line-height:1.65;
-        }
-
-        .outcomeList{
-          margin-top:18px;
-          display:grid;
-          gap:10px;
-        }
-
-        .outcomeItem{
-          color:#d4d4e2;
-          padding:12px 14px;
-          border-radius:14px;
-          background:rgba(255,255,255,.06);
-          border:1px solid rgba(255,255,255,.1);
-        }
-
-        .bigImageOverlay{
-          z-index:1000;
-        }
-
-        .bigImageBox{
-          width:96vw;
-          height:95vh;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          position:relative;
-        }
-
-        .bigImageBox img{
-          max-width:95vw;
-          max-height:88vh;
-          object-fit:contain;
-          border-radius:20px;
-          padding:10px;
-          background:white;
-          box-shadow:0 0 80px #00e5ff,0 0 160px #ff00cc;
-        }
-
-        .imageTopBar{
-          position:fixed;
-          top:25px;
-          right:25px;
-          z-index:100000;
-          display:flex;
-          align-items:center;
-          gap:12px;
-        }
-
-        .bigImageClose{
-          width:55px;
-          height:55px;
-          border-radius:50%;
-          border:none;
-          background:linear-gradient(135deg,#00e5ff,#ff00cc,#ff9900);
-          color:white;
-          font-size:30px;
-          font-weight:900;
-          cursor:pointer;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
-        }
-
-        .imageCounter{
-          padding:14px 22px;
-          border-radius:16px;
-          background:rgba(255,255,255,.12);
-          border:1px solid rgba(255,255,255,.25);
-          color:white;
-          font-weight:900;
-        }
-
-        .imageArrow{
-          position:absolute;
-          top:50%;
-          transform:translateY(-50%);
-          width:70px;
-          height:70px;
-          border-radius:50%;
-          border:none;
-          font-size:55px;
-          color:white;
-          cursor:pointer;
-          z-index:1001;
-          background:linear-gradient(135deg,#00e5ff,#ff00cc,#ff9900);
-          box-shadow:0 0 40px #00e5ff,0 0 80px #ff00cc;
-        }
-
-        .leftArrow{left:35px;}
-        .rightArrow{right:35px;}
-
-        @keyframes move{
-          0%{background-position:0% 50%}
-          50%{background-position:100% 50%}
-          100%{background-position:0% 50%}
-        }
-
-        @keyframes projectGlow{
-          0%{box-shadow:0 0 20px rgba(0,229,255,.15)}
-          50%{box-shadow:0 0 35px #00e5ff,0 0 70px #ff00cc}
-          100%{box-shadow:0 0 20px rgba(0,229,255,.15)}
-        }
-
-        @media(max-width:900px){
-          .container{
-            width:92%;
-            max-width:100%;
-            padding:0 8px;
-          }
-
-          nav{
-            position:relative;
-            top:0;
-            flex-direction:column;
-            gap:14px;
-            padding:18px;
-            border-radius:25px;
-          }
-
-          nav div:last-child{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-            gap:12px;
-          }
-
-          nav a{
-            margin:0;
-            font-size:12px;
-          }
-
-          .hero{
-            grid-template-columns:1fr;
-            gap:35px;
-            min-height:auto;
-            padding:45px 0;
-          }
-
-          .photoBox{
-            width:100%;
-            max-width:360px;
-            margin:auto;
-          }
-
-          h1{
-            font-size:48px;
-            line-height:1;
-          }
-
-          h2{
-            font-size:38px;
-          }
-
-          .text,.aboutText{
-            font-size:16px;
-          }
-
-          section{
-            padding:60px 0;
-          }
-
-          .glass{
-            padding:25px;
-          }
-
-          .skillChip{
-            padding:12px 16px;
-            font-size:14px;
-          }
-
-          .projectGrid{
-            grid-template-columns:1fr;
-          }
-
-          .contact{
-            grid-template-columns:1fr;
-          }
-
-          .modal{
-            width:95vw;
-            padding:20px;
-          }
-
-          .modalHeader{
-            flex-direction:column;
-          }
-
-          .modalGallery{
-            grid-template-columns:1fr;
-          }
-
-          .modalGallery img{
-            height:auto;
-            max-height:60vh;
-          }
-
-          .bigImageBox img{
-            max-width:90vw;
-            max-height:70vh;
-          }
-
-          .imageArrow{
-            width:45px;
-            height:45px;
-            font-size:34px;
-          }
-
-          .leftArrow{left:8px;}
-          .rightArrow{right:8px;}
-
-          .imageTopBar{
-            top:14px;
-            right:14px;
-          }
-
-          .bigImageClose{
-            width:46px;
-            height:46px;
-            font-size:25px;
-          }
-
-          .imageCounter{
-            padding:10px 14px;
-            font-size:12px;
-          }
-
-          .timelineItem{
-            grid-template-columns:1fr;
-          }
-
-          .profileMiniCard{
-            grid-template-columns:1fr;
-            text-align:center;
-          }
-
-          .profileMiniCard img{
-            margin:auto;
-          }
-        }
+        .wrap{width:96%;max-width:1780px;margin:auto;position:relative;z-index:1}
+        header{height:68px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:rgba(4,10,22,.78);backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
+        .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+        .badgeLogo{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#a855f7);color:#08101f;font-weight:1000;box-shadow:0 0 22px rgba(168,85,247,.7)}
+        .brand span{display:block;font-size:12px;color:#a855f7;letter-spacing:.6px}
+        nav{display:flex;gap:46px;align-items:center}
+        nav a{color:white;text-decoration:none;font-weight:800;font-size:14px;opacity:.92}
+        nav a:first-child{color:#bf5cff;border-bottom:3px solid #bf5cff;padding-bottom:18px}
+        .download{padding:12px 21px;border-radius:8px;border:1px solid #b94cff;color:white;text-decoration:none;font-weight:900;background:rgba(168,85,247,.08)}
+        .mainGrid{display:grid;grid-template-columns:330px 1fr 390px;gap:24px;padding:18px 0 22px}
+        .card{background:rgba(7,18,35,.72);border:1px solid rgba(168,85,247,.45);border-radius:12px;box-shadow:0 0 22px rgba(0,212,255,.08),inset 0 0 40px rgba(168,85,247,.03)}
+        .sideProfile{padding:24px;text-align:center;min-height:560px}
+        .avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #a855f7;box-shadow:0 0 40px rgba(168,85,247,.9),0 0 35px rgba(0,212,255,.55);margin:0 auto 14px;background:#111}
+        .sideProfile h1{font-size:28px;line-height:1;margin-bottom:10px}
+        .purple{color:#b44dff}.blue{color:#00b7ff}.muted{color:#c7d0dd}.small{font-size:13px;line-height:1.6}
+        .linkedIcon{width:34px;height:34px;border-radius:7px;background:#0a66c2;display:grid;place-items:center;margin:18px auto 18px;font-weight:900;font-size:22px}
+        .sideBtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+        .outlineBtn{border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:11px;color:white;text-decoration:none;font-weight:900;background:rgba(255,255,255,.04)}
+        .sideList{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;text-align:left;display:grid;gap:12px;color:#d9e3ee;font-size:13px}
+        .hero{min-height:310px;padding:22px 14px 0}
+        .pill{display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border:1px solid #a855f7;border-radius:999px;color:#c15cff;font-weight:900;font-size:13px;margin-bottom:22px;background:rgba(168,85,247,.08)}
+        .dot{width:10px;height:10px;border-radius:50%;background:#b44dff;box-shadow:0 0 18px #b44dff}
+        .hero h2{font-size:56px;line-height:1.05;margin-bottom:18px;letter-spacing:-1px}
+        .hero h2 span{color:#b44dff}
+        .hero p{font-size:18px;line-height:1.6;color:#d9e3ee;max-width:680px}
+        .heroBtns{display:flex;gap:24px;margin-top:28px}
+        .primary{padding:16px 35px;border-radius:8px;background:linear-gradient(90deg,#d52dff,#7c3aed);color:white;text-decoration:none;font-weight:900;box-shadow:0 0 25px rgba(168,85,247,.35)}
+        .secondary{padding:16px 35px;border-radius:8px;border:1px solid rgba(255,255,255,.35);color:white;text-decoration:none;font-weight:900;background:rgba(255,255,255,.03)}
+        .infoStrip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:26px;overflow:hidden}
+        .infoItem{padding:20px 28px;border-right:1px solid rgba(255,255,255,.16)}
+        .infoItem:last-child{border-right:0}.infoItem strong{display:block;margin-bottom:9px}.infoItem p{color:#d9e3ee;line-height:1.5}
+        .topCards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}.miniCard{padding:24px}.miniCard h3{font-size:20px;margin-bottom:18px}.miniCard p,.miniCard li{color:#d9e3ee;line-height:1.7}.miniCard ul{list-style:none;display:grid;gap:12px}.miniCard li:before{content:"✦";color:#b44dff;margin-right:10px}
+        .profileRight{display:grid;grid-template-columns:1fr 95px;gap:22px;align-items:center}.profileRight img{width:94px;height:94px;border-radius:50%;object-fit:cover;border:3px solid #a855f7;box-shadow:0 0 28px rgba(168,85,247,.8)}
+        .linkedinRow{display:flex;justify-content:space-between;align-items:end;margin-top:12px}.linkedinLower{margin-top:24px;display:inline-grid;place-items:center}.linkedinBtn{padding:12px 26px;border-radius:8px;background:linear-gradient(90deg,#d52dff,#7c3aed);color:white;text-decoration:none;font-weight:900}
+        .tools{display:grid;grid-template-columns:1.1fr 1.5fr;gap:24px;margin-top:18px}.toolIcons{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.tool{text-align:center;color:#d9e3ee;font-size:12px}.tool span{font-size:34px;display:block;margin-bottom:8px}.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.chip{padding:9px 14px;border:1px solid rgba(255,255,255,.18);border-radius:8px;color:#d9e3ee;font-weight:800;font-size:12px;background:rgba(255,255,255,.04)}
+        .sectionTitle{font-size:24px;border-left:5px solid #b44dff;padding-left:12px;margin-bottom:14px}.filters{display:flex;gap:15px;margin-bottom:14px}.filter{padding:11px 26px;border-radius:8px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.04);color:white;font-weight:900}.filter:first-child{background:linear-gradient(90deg,#d52dff,#7c3aed)}
+        .projects{grid-column:1/3;padding:12px}.projectGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.project{display:grid;grid-template-columns:160px 1fr;gap:18px;padding:14px;min-height:240px}.project img{width:160px;height:190px;object-fit:cover;border-radius:12px;background:white}.project h3{font-size:20px;margin:8px 0}.project p{color:#d9e3ee;line-height:1.5;font-size:14px}.project ul{list-style:none;margin:12px 0;display:grid;gap:6px}.project li{font-size:13px;color:#d9e3ee}.project li:before{content:"✓";color:#3dff7a;margin-right:8px}.tag{display:inline-block;padding:4px 8px;border-radius:6px;background:#a855f7;font-size:11px;font-weight:900;margin-left:8px}.projectFooter{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:#c7d0dd;font-size:12px}.sheet{padding:10px 16px;border-radius:7px;border:1px solid #b44dff;color:#eecbff;text-decoration:none;font-weight:900}
+        .bottomGrid{display:grid;grid-template-columns:1.2fr 1.1fr 1.2fr 1fr 1.2fr;gap:14px;margin:14px 0}.bottomBox{padding:18px}.bottomBox h3{font-size:18px;margin-bottom:12px}.bottomBox p,.bottomBox li{font-size:14px;color:#d9e3ee;line-height:1.7}.bottomBox ul{list-style:none}.bottomBox li:before{content:"⊙";color:#b44dff;margin-right:9px}.quote{text-align:center;padding:9px;border-radius:8px;border:1px solid rgba(168,85,247,.45);font-size:22px;font-weight:900;font-style:italic;color:#f2eaff}.footer{display:flex;justify-content:space-between;color:#c7d0dd;font-size:13px;padding:12px 0 22px}
+        .modalOverlay,.imageOverlay{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(12px)}.modal{width:min(1100px,94vw);max-height:88vh;overflow:auto;padding:26px}.close{position:absolute;top:22px;right:22px;width:46px;height:46px;border-radius:50%;border:0;background:#b44dff;color:white;font-size:26px;font-weight:900;cursor:pointer}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:22px}.gallery img{width:100%;height:230px;object-fit:contain;background:white;border-radius:12px;padding:10px;cursor:pointer}.imageBox{position:relative}.imageBox img{max-width:92vw;max-height:86vh;background:white;padding:12px;border-radius:12px}.imageClose{position:fixed;top:24px;right:24px;width:55px;height:55px;border:0;border-radius:50%;background:#b44dff;color:white;font-size:30px;font-weight:900;z-index:200;cursor:pointer}
+        @media(max-width:1100px){.mainGrid{grid-template-columns:1fr}.projects{grid-column:auto}.projectGrid,.infoStrip,.tools,.bottomGrid,.topCards{grid-template-columns:1fr}.sideProfile{min-height:auto}nav{display:none}.hero h2{font-size:42px}.project{grid-template-columns:1fr}.project img{width:100%;height:220px}.profileRight{grid-template-columns:1fr}.footer{flex-direction:column;gap:10px}.wrap{width:92%}header{padding:0 16px}.download{display:none}}
       `}</style>
 
-      <div className="scrollProgress"></div>
-      <div className="particles"></div>
+      <header>
+        <div className="brand"><div className="badgeLogo">MHS</div><div>MHS ENGINEERING<span>PORTFOLIO</span></div></div>
+        <nav><a href="#top">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#timeline">Timeline</a><a href="#apprenticeship">Apprenticeship</a><a href="#contact">Contact</a></nav>
+        <a className="download" href="/cv.pdf" download>⌄ Download CV</a>
+      </header>
 
-      <div className="container">
-        <nav>
-          <div className="logo">MHS</div>
-          <div>
-            <a href="#home">HOME</a>
-            <a href="#seeking">SEEKING</a>
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#contact">CONTACT</a>
-          </div>
-        </nav>
+      <main className="wrap mainGrid">
+        <aside className="card sideProfile">
+          <img className="avatar" src="/profile/photo.png" alt="Mohammad Hashim Siddique" />
+          <h1>Mohammad Hashim Siddique</h1>
+          <strong className="purple">Mechanical Engineering Student</strong>
+          <p className="small muted" style={{marginTop:16}}>Passionate about CAD design, product development and problem-solving. Building practical solutions and preparing for a career in engineering.</p>
+          <a className="linkedIcon" href="https://www.linkedin.com" target="_blank" rel="noreferrer">in</a>
+          <div className="sideBtns"><a className="outlineBtn" href="https://github.com/hashimsiddique567-boop" target="_blank" rel="noreferrer">GitHub</a><a className="outlineBtn" href="mailto:hashimsiddique567@gmail.com">Email</a></div>
+          <div className="sideList"><div>⌖ Lancashire, UK</div><div>⌘ Runshaw College Student</div><div>✚ Seeking Apprenticeship</div></div>
+        </aside>
 
-        <section id="home" className="hero">
-          <div>
-            <div className="small">Mechanical Engineering Student</div>
-            <h1>
-              Mohammad <span className="gradient">Hashim</span> Siddique
-            </h1>
-
-            <p className="text">
-              Passionate about CAD design, product development and solving practical engineering problems through creativity, precision and innovation.
-            </p>
-
-            <div className="buttons">
-              <a className="btn one" href="/cv.pdf" download>
-                DOWNLOAD CV
-              </a>
-
-              <a className="btn two" href="#projects">
-                VIEW PROJECTS
-              </a>
-            </div>
-
-            <div className="heroLinks">
-              <a className="miniLink" href="mailto:hashimsiddique567@gmail.com">Email Me</a>
-              <a className="miniLink" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a className="miniLink" href="https://github.com/hashimsiddique567-boop" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-
-            <div className="infoStrip">
-              <div className="infoCard"><strong>Studying</strong>Level 3 Engineering</div>
-              <div className="infoCard"><strong>Seeking</strong>Mechanical Engineering Apprenticeship</div>
-              <div className="infoCard"><strong>Location</strong>Lancashire, UK</div>
-            </div>
-          </div>
-
-          <div className="photoBox">
-            <div className="photoInner">
-              <img src="/profile/photo.png" alt="Mohammad Hashim Siddique portrait" />
-            </div>
-          </div>
+        <section className="hero">
+          <div className="pill"><span className="dot"></span>Mechanical Engineering Portfolio</div>
+          <h2>Designing Today,<br /><span>Building</span> Tomorrow.</h2>
+          <p>I design and develop practical engineering projects using CAD, turning ideas into real-world solutions.</p>
+          <div className="heroBtns"><a className="primary" href="#projects">View My Projects →</a><a className="secondary" href="#contact">✉ Contact Me</a></div>
+          <div className="infoStrip card"><div className="infoItem"><strong>Currently Studying</strong><p>Level 3 Engineering<br />Runshaw College</p></div><div className="infoItem"><strong>Seeking</strong><p>Mechanical Engineering<br />Apprenticeship</p></div><div className="infoItem"><strong>Location</strong><p>Lancashire<br />United Kingdom</p></div><div className="infoItem"><strong>Goal</strong><p>Build skills, gain experience<br />and make an impact.</p></div></div>
+          <div className="tools" id="skills"><div className="card miniCard"><h3>CAD & Engineering Tools</h3><div className="toolIcons"><div className="tool"><span>3D</span>SolidWorks</div><div className="tool"><span>📐</span>Technical<br/>Drawings</div><div className="tool"><span>▣</span>Assemblies</div><div className="tool"><span>🛠</span>Workshop<br/>Skills</div></div></div><div className="card miniCard"><h3>Core Skills</h3><div className="chips"><span className="chip">CAD Design</span><span className="chip">Product Development</span><span className="chip">Technical Drawings</span><span className="chip">Problem Solving</span><span className="chip">Creativity</span><span className="chip">Attention to Detail</span><span className="chip">Teamwork</span><span className="chip">Time Management</span></div></div></div>
         </section>
 
-        <section id="seeking">
-          <div className="glass">
-            <div className="infoStrip" style={{ marginTop: 0, marginBottom: "35px" }}>
-              <div className="infoCard"><strong>Availability</strong>Open to apprenticeship opportunities</div>
-              <div className="infoCard"><strong>Focus</strong>Mechanical Engineering • CAD • Workshop Skills</div>
-              <div className="infoCard"><strong>Best Contact</strong>hashimsiddique567@gmail.com</div>
-            </div>
-            <div className="sectionLabel">Currently Seeking</div>
-            <h2>Mechanical Engineering Apprenticeship</h2>
+        <aside className="rightCol">
+          <div className="topCards"><div className="card miniCard"><h3>Availability</h3><p><strong>Seeking Mechanical Engineering Apprenticeship</strong></p><p>Start Date: September 2025</p><p>Location: Lancashire, UK</p></div><div className="card miniCard"><h3>At a Glance</h3><ul><li>3+ Major Projects Completed</li><li>100+ CAD Hours Logged</li><li>Strong Problem Solver</li></ul></div></div>
+          <div className="card miniCard" style={{marginTop:24}}><div className="profileRight"><div><h3>Profile</h3><p><strong>Name:</strong><br/>Mohammad Hashim Siddique</p><p><strong>Role:</strong><br/>Mechanical Engineering Student</p><p><strong>College:</strong><br/>Runshaw College</p><div className="linkedinRow"><a className="linkedIcon linkedinLower" href="https://www.linkedin.com" target="_blank" rel="noreferrer">in</a><a className="linkedinBtn" href="https://www.linkedin.com" target="_blank" rel="noreferrer">View LinkedIn Profile →</a></div></div><img src="/profile/photo.png" alt="profile" /></div></div>
+          <div className="card miniCard" id="about" style={{marginTop:18}}><h3>Why Mechanical Engineering?</h3><p>I enjoy turning ideas into practical solutions and seeing designs develop from concept to finished products. Engineering challenges me to think creatively and solve real-world problems.</p></div>
+          <div className="card miniCard" id="apprenticeship" style={{marginTop:18}}><h3>Apprenticeship Goals</h3><ul><li>Gain hands-on industry experience</li><li>Learn from skilled engineers</li><li>Develop CAD and workshop skills</li><li>Build a strong engineering career</li></ul></div>
+        </aside>
 
-            <p className="aboutText">
-              I am currently looking for a Mechanical Engineering Apprenticeship where I can develop practical skills, work alongside experienced engineers and continue improving my CAD, workshop and problem-solving experience.
-            </p>
+        <section className="card projects" id="projects"><h2 className="sectionTitle">Featured Projects</h2><div className="filters"><button className="filter">All</button><button className="filter">CAD</button><button className="filter">Mechanisms</button><button className="filter">Product Design</button></div><div className="projectGrid">{projects.map((p)=><article className="card project" key={p.title} onClick={()=>setSelectedProject(p)}><img src={p.image} alt={p.title}/><div><h3>{p.title}<span className="tag">{p.tag}</span></h3><p>{p.desc}</p><ul>{p.points.map(point=><li key={point}>{point}</li>)}</ul><div className="projectFooter"><span>◷ {p.hours}</span><span>{p.type}</span><a className="sheet">Project Sheet ⇩</a></div></div></article>)}</div></section>
 
-            <div className="skillsWrap">
-              <div className="skillChip">CAD Projects: 4</div>
-              <div className="skillChip">SolidWorks</div>
-              <div className="skillChip">Technical Drawings</div>
-              <div className="skillChip">Workshop Skills</div>
-            </div>
-          </div>
-        </section>
+        <section className="bottomGrid"><div className="card bottomBox"><h3>Qualifications / Certifications</h3><ul><li>Level 3 Engineering In Progress</li><li>GCSE Maths</li><li>GCSE Science</li><li>Workshop Safety Training</li></ul></div><div className="card bottomBox"><h3>Currently Learning</h3><ul><li>Advanced CAD Assemblies</li><li>Manufacturing Processes</li><li>Mechanical Systems</li><li>Engineering Mathematics</li></ul></div><div className="card bottomBox" id="timeline"><h3>Engineering Timeline</h3><p><strong>2023</strong> Started Level 3 Engineering</p><p><strong>2024</strong> First CAD Projects</p><p><strong>2025</strong> Built Lamp, Phone Stand & Piano Stool</p><p><strong>Now</strong> Seeking Apprenticeship</p></div><div className="card bottomBox" id="contact"><h3>Response Time</h3><p>I aim to respond to all enquiries within <strong className="purple">24 - 48 hours.</strong></p></div><div className="card bottomBox"><h3>Project Sheets</h3><p>Download detailed PDF sheets for each project including process, drawings and outcomes.</p></div></section>
+        <div className="quote">“ Engineering is turning ideas into practical solutions. ”</div>
+        <div className="footer"><span>© 2025 MHS Engineering Portfolio. All rights reserved.</span><span>Designed & Built with 💜 by Mohammad Hashim Siddique</span><a href="#top" className="muted">Back to Top ↑</a></div>
+      </main>
 
-        <section id="about">
-          <div className="sectionLabel">About Me</div>
-          <h2>About</h2>
-
-          <div className="glass">
-            <p className="aboutText">
-              I am a motivated Mechanical Engineering student with a strong interest in CAD design, product development and practical engineering problem solving. I enjoy transforming ideas from early concepts into detailed engineering solutions through 3D modelling, technical drawings and design development.
-            </p>
-
-            <p className="aboutText">
-              Throughout my projects I have developed experience creating assemblies, analysing movement mechanisms and producing engineering drawings with attention to detail and real-world functionality.
-            </p>
-
-            <p className="aboutText">
-              Projects including an adjustable lamp, phone stand mechanism, piano stool design and engineering redesign challenges have strengthened my confidence in CAD software, workshop processes and engineering communication.
-            </p>
-          </div>
-        </section>
-
-        <section id="skills">
-          <div className="sectionLabel">Skills</div>
-          <h2>Technical Skills</h2>
-
-          <div className="skillsWrap">
-            <div className="skillChip">SolidWorks</div>
-            <div className="skillChip">CAD Design</div>
-            <div className="skillChip">Technical Drawings</div>
-            <div className="skillChip">Mechanism Design</div>
-            <div className="skillChip">3D Modelling</div>
-            <div className="skillChip">Engineering Design</div>
-            <div className="skillChip">Workshop Skills</div>
-            <div className="skillChip">Problem Solving</div>
-          </div>
-
-          <div className="softwareRow">
-            <div className="softwareCard"><span className="softwareIcon">⚙️</span>SolidWorks CAD</div>
-            <div className="softwareCard"><span className="softwareIcon">📐</span>Technical Drawings</div>
-            <div className="softwareCard"><span className="softwareIcon">🧩</span>Assemblies</div>
-            <div className="softwareCard"><span className="softwareIcon">🛠️</span>Workshop Skills</div>
-          </div>
-        </section>
-
-        <section id="qualifications">
-          <div className="sectionLabel">Qualifications</div>
-          <h2>Education & Certifications</h2>
-
-          <div className="skillsWrap">
-            <div className="skillChip">Level 3 Engineering</div>
-            <div className="skillChip">Level 2 Mechanical Pathway</div>
-            <div className="skillChip">GCSE Mathematics</div>
-            <div className="skillChip">GCSE Science</div>
-            <div className="skillChip">Workshop Safety</div>
-            <div className="skillChip">Technical Drawing Basics</div>
-          </div>
-        </section>
-
-        <section id="learning">
-          <div className="sectionLabel">Currently Learning</div>
-          <h2>Developing My Engineering Skills</h2>
-
-          <div className="glass">
-            <p className="aboutText">
-              I am currently improving my understanding of advanced CAD assemblies, manufacturing processes, mechanical systems and practical workshop problem-solving.
-            </p>
-
-            <div className="skillsWrap">
-              <div className="skillChip">Advanced CAD Assemblies</div>
-              <div className="skillChip">Manufacturing Processes</div>
-              <div className="skillChip">Mechanical Systems</div>
-              <div className="skillChip">Workshop Practice</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="why-engineering">
-          <div className="sectionLabel">Why Mechanical Engineering?</div>
-          <h2>Why I Chose Engineering</h2>
-
-          <div className="glass">
-            <p className="aboutText">
-              I enjoy turning ideas into practical solutions and seeing a design develop from an early concept into a working product. Mechanical engineering interests me because it combines creativity, technical thinking and real-world problem solving.
-            </p>
-          </div>
-        </section>
-
-        <section id="goals">
-          <div className="sectionLabel">Apprenticeship Goals</div>
-          <h2>What I Want To Achieve</h2>
-
-          <div className="skillsWrap">
-            <div className="skillChip">Gain industry experience</div>
-            <div className="skillChip">Learn from engineers</div>
-            <div className="skillChip">Develop CAD skills</div>
-            <div className="skillChip">Improve workshop confidence</div>
-            <div className="skillChip">Build a long-term engineering career</div>
-          </div>
-        </section>
-
-        <section id="timeline">
-          <div className="sectionLabel">Progression</div>
-          <h2>Engineering Timeline</h2>
-
-          <div className="timeline">
-            <div className="timelineItem">
-              <div className="timelineYear">2023</div>
-              <div className="timelineText">Started Level 3 Engineering and began developing stronger workshop, safety and technical knowledge.</div>
-            </div>
-
-            <div className="timelineItem">
-              <div className="timelineYear">2024</div>
-              <div className="timelineText">Built confidence with CAD modelling, engineering drawings and practical design tasks.</div>
-            </div>
-
-            <div className="timelineItem">
-              <div className="timelineYear">2025</div>
-              <div className="timelineText">Developed CAD portfolio projects including the adjustable lamp, phone stand, piano stool and design problem solutions.</div>
-            </div>
-
-            <div className="timelineItem">
-              <div className="timelineYear">Now</div>
-              <div className="timelineText">Seeking a Mechanical Engineering Apprenticeship to build industry experience and learn from experienced engineers.</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects">
-          <div className="sectionLabel">My Work</div>
-          <h2>Featured Engineering Projects</h2>
-
-          <div className="filterBar">
-            <button className="filterBtn">All</button>
-            <button className="filterBtn">CAD</button>
-            <button className="filterBtn">Mechanisms</button>
-            <button className="filterBtn">Product Design</button>
-          </div>
-
-          <div className="projectGrid">
-            {projects.map((project, index) => (
-              <div
-                className="projectCard"
-                key={index}
-                onClick={() => setSelectedProject(project)}
-              >
-                <img src={project.image} alt={project.title} />
-
-                <div className="projectText">
-                  <div className="tag">{project.tag}</div>
-                  <h3>{project.title}</h3>
-                  <p>{project.desc}</p>
-                  <div className="clickText">CLICK TO VIEW FULL PROJECT →</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="journey">
-          <div className="sectionLabel">Journey</div>
-          <h2>Engineering Pathway</h2>
-
-          <div className="glass">
-            <p className="aboutText">
-              <strong>2023 – Present:</strong> Studying Level 3 Engineering at Runshaw College.
-            </p>
-
-            <p className="aboutText">
-              <strong>CAD Portfolio:</strong> Building projects including an adjustable lamp, phone stand, piano stool and design problem solutions.
-            </p>
-
-            <p className="aboutText">
-              <strong>Next Step:</strong> Seeking a Mechanical Engineering Apprenticeship to develop practical industry experience.
-            </p>
-          </div>
-        </section>
-
-        <section id="profile-card">
-          <div className="sectionLabel">Profile</div>
-          <h2>Professional Profile</h2>
-
-          <div className="profileMiniCard">
-            <img src="/profile/photo.png" alt="Mohammad Hashim Siddique" />
-            <div>
-              <h3>Mohammad Hashim Siddique</h3>
-              <p>Mechanical Engineering student focused on CAD design, product development and practical engineering problem-solving.</p>
-              <a className="miniLink" href="https://www.linkedin.com" target="_blank" rel="noreferrer">View LinkedIn</a>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact">
-          <div className="sectionLabel">Get In Touch</div>
-          <h2>Contact</h2>
-
-          <div className="glass contact">
-            <div>
-              <p className="aboutText">
-                Have a CAD project, engineering idea or opportunity? I’d be happy to hear from you.
-              </p>
-
-              <p className="aboutText">
-                <strong>Email:</strong><br />
-                hashimsiddique567@gmail.com<br /><br />
-                <strong>Location:</strong><br />
-                Chorley, Lancashire — UK<br /><br />
-                <strong>Response Time:</strong><br />
-                Usually within 24–48 hours
-              </p>
-            </div>
-
-            {formSent ? (
-              <div className="glass" style={{ textAlign: "center" }}>
-                <div className="sectionLabel">Message Sent</div>
-                <h2>Thank You</h2>
-
-                <p className="aboutText">
-                  Thank you for getting in touch. I have received your message and will reply as soon as possible.
-                </p>
-
-                <a className="btn one" href="#home">
-                  BACK TO HOME
-                </a>
-              </div>
-            ) : (
-              <form onSubmit={handleContactSubmit}>
-                <input name="name" placeholder="Your Name" required />
-                <input name="email" type="email" placeholder="Your Email" required />
-                <textarea name="message" placeholder="Message" required />
-
-                <button className="sendEmail" type="submit">
-                  {sending ? "SENDING..." : "SEND MESSAGE"}
-                </button>
-              </form>
-            )}
-          </div>
-        </section>
-
-        <footer>
-          © 2026 Mohammad Hashim Siddique. All rights reserved.
-          <div className="footerQuote">“Engineering is turning ideas into practical solutions.”</div>
-        </footer>
-      </div>
-
-      {selectedProject && (
-        <div className="modalOverlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modalHeader">
-              <div>
-                <div className="tag">{selectedProject.tag}</div>
-                <h2>{selectedProject.title}</h2>
-              </div>
-
-              <button className="closeBtn" onClick={() => setSelectedProject(null)}>
-                ✕
-              </button>
-            </div>
-
-            <p className="aboutText">{selectedProject.desc}</p>
-
-            <div className="skillsWrap">
-              {selectedProject.stats.map((item) => (
-                <div className="skillChip" key={item}>{item}</div>
-              ))}
-            </div>
-
-            <div className="caseGrid">
-              <div className="caseBox">
-                <h3>Tools Used</h3>
-                <p>{selectedProject.tools}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>Time Spent</h3>
-                <p>{selectedProject.time}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>Biggest Challenge</h3>
-                <p>{selectedProject.challenge}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>Problem</h3>
-                <p>{selectedProject.problem}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>Design Process</h3>
-                <p>{selectedProject.process}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>What I Learned</h3>
-                <p>{selectedProject.learned}</p>
-              </div>
-
-              <div className="caseBox">
-                <h3>Project Outcomes</h3>
-                <div className="outcomeList">
-                  {selectedProject.outcomes.map((outcome) => (
-                    <div className="outcomeItem" key={outcome}>✓ {outcome}</div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <a className="projectSheet" href={selectedProject.sheet} download>
-              Download Project Sheet
-            </a>
-
-            <div className="modalGallery">
-              {selectedProject.images.map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={selectedProject.title}
-                  onClick={() => setSelectedImage(img)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {selectedImage && (
-        <div className="bigImageOverlay" onClick={() => setSelectedImage(null)}>
-          <div className="bigImageBox" onClick={(e) => e.stopPropagation()}>
-            <div className="imageTopBar">
-              <button className="bigImageClose" onClick={() => setSelectedImage(null)}>
-                ✕
-              </button>
-
-              <div className="imageCounter">
-                {currentIndex + 1} / {selectedProject.images.length}
-              </div>
-            </div>
-
-            <button className="imageArrow leftArrow" onClick={showPrevImage}>
-              ‹
-            </button>
-
-            <img src={selectedImage} alt="Full project view" />
-
-            <button className="imageArrow rightArrow" onClick={showNextImage}>
-              ›
-            </button>
-          </div>
-        </div>
-      )}
+      {selectedProject && <div className="modalOverlay" onClick={()=>setSelectedProject(null)}><div className="card modal" onClick={(e)=>e.stopPropagation()}><button className="close" onClick={()=>setSelectedProject(null)}>×</button><h2>{selectedProject.title}</h2><p className="muted" style={{marginTop:12}}>{selectedProject.desc}</p><div className="gallery">{selectedProject.images.map(img=><img key={img} src={img} alt="project" onClick={()=>setSelectedImage(img)}/>)}</div></div></div>}
+      {selectedImage && <div className="imageOverlay" onClick={()=>setSelectedImage(null)}><button className="imageClose" onClick={()=>setSelectedImage(null)}>×</button><div className="imageBox" onClick={(e)=>e.stopPropagation()}><img src={selectedImage} alt="Full project" /></div></div>}
     </div>
   );
 }
