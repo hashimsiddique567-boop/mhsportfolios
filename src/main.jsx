@@ -18,6 +18,12 @@ const projects = [
     ],
     tag: "SolidWorks • Assembly • Technical Drawings",
     desc: "Adjustable desk lamp CAD project including 3D modelling, assembly design, technical drawings and manufacturability.",
+    problem:
+      "The design challenge was to create an adjustable lamp that could be positioned easily while remaining stable and practical for everyday use.",
+    process:
+      "I developed the lamp through CAD modelling, component design, assembly planning and technical drawings. I considered movement, stability and how the parts could be manufactured.",
+    learned:
+      "This project improved my understanding of assemblies, mechanical movement, technical drawings and designing products with real use in mind.",
   },
   {
     title: "Adjustable Phone Stand",
@@ -34,6 +40,12 @@ const projects = [
     ],
     tag: "CAD Design • Mechanism • PLA Parts",
     desc: "Adjustable phone stand with component modelling, assembly development and engineering drawings.",
+    problem:
+      "The aim was to design a practical phone stand that could support a phone at different viewing angles while staying strong and stable.",
+    process:
+      "I created CAD parts, tested the shape and structure, developed the assembly and produced drawings showing how the product would work.",
+    learned:
+      "This helped me improve my CAD modelling, product design thinking and understanding of simple adjustable mechanisms.",
   },
   {
     title: "Piano Stool & Hinge CAD Design",
@@ -51,6 +63,12 @@ const projects = [
     ],
     tag: "Hinge Mechanism • Product Design",
     desc: "Foldable piano stool and hinge mechanism with detailed CAD development and manufacturing considerations.",
+    problem:
+      "The challenge was to design a folding stool mechanism that could move correctly, support weight and remain practical to manufacture.",
+    process:
+      "I focused on the hinge mechanism, component relationships, foldable movement and the structural design of the stool.",
+    learned:
+      "This improved my understanding of hinge design, mechanical movement, assemblies and product function.",
   },
   {
     title: "Engineering Design Problem Solutions",
@@ -67,6 +85,12 @@ const projects = [
     ],
     tag: "Problem Solving • Optimisation • Testing",
     desc: "Engineering design challenge work involving concept sketches, CAD modelling, redesign, optimisation and validation.",
+    problem:
+      "This work focused on solving design problems by identifying weaknesses and improving the product through redesign.",
+    process:
+      "I used sketches, CAD modelling, testing ideas and optimisation to develop better engineering solutions.",
+    learned:
+      "This strengthened my problem-solving, creative thinking and ability to improve designs based on practical requirements.",
   },
 ];
 
@@ -80,7 +104,7 @@ function Portfolio() {
   const currentIndex = selectedProject?.images?.indexOf(selectedImage) ?? -1;
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1600);
+    const timer = setTimeout(() => setLoading(false), 1400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -124,7 +148,6 @@ function Portfolio() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!selectedImage) return;
-
       if (e.key === "Escape") setSelectedImage(null);
       if (e.key === "ArrowLeft") showPrevImage();
       if (e.key === "ArrowRight") showNextImage();
@@ -177,7 +200,7 @@ function Portfolio() {
           .loaderFill{
             height:100%;
             background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
-            animation:load 1.6s linear;
+            animation:load 1.4s linear;
           }
 
           @keyframes load{
@@ -211,11 +234,13 @@ function Portfolio() {
 
         html{
           scroll-behavior:smooth;
+          overflow-x:hidden;
         }
 
         body{
           background:#020016;
           color:white;
+          overflow-x:hidden;
         }
 
         .scrollProgress{
@@ -279,7 +304,7 @@ function Portfolio() {
         nav a{
           color:white;
           text-decoration:none;
-          margin-left:34px;
+          margin-left:28px;
           font-weight:900;
           font-size:13px;
           letter-spacing:2px;
@@ -359,7 +384,6 @@ function Portfolio() {
         }
 
         .btn:hover,.sendEmail:hover{
-          transform:translateY(-5px);
           box-shadow:0 0 45px #00e5ff,0 0 70px #ff00cc;
         }
 
@@ -411,10 +435,10 @@ function Portfolio() {
           backdrop-filter:blur(20px);
           font-weight:900;
           transition:.3s;
+          box-shadow:0 0 18px rgba(0,229,255,.15);
         }
 
         .skillChip:hover{
-          
           box-shadow:0 0 30px rgba(0,229,255,.3),0 0 45px rgba(255,0,204,.25);
         }
 
@@ -437,7 +461,6 @@ function Portfolio() {
         }
 
         .projectCard:hover{
-          
           box-shadow:0 0 45px #00e5ff,0 0 85px #ff00cc;
         }
 
@@ -470,6 +493,7 @@ function Portfolio() {
         .projectText p{
           color:#d4d4e2;
           line-height:1.65;
+          margin-bottom:18px;
         }
 
         .clickText{
@@ -532,6 +556,7 @@ function Portfolio() {
           border:1px solid rgba(255,255,255,.18);
           box-shadow:0 0 60px #00e5ff,0 0 120px rgba(255,0,204,.5);
           padding:30px;
+          position:relative;
         }
 
         .modalHeader{
@@ -547,14 +572,17 @@ function Portfolio() {
           line-height:.95;
         }
 
-        .closeBtn,.bigImageClose{
-          padding:14px 22px;
-          border-radius:16px;
+        .closeBtn{
+          min-width:52px;
+          height:52px;
+          border-radius:50%;
           background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
           color:white;
           border:none;
+          font-size:28px;
           font-weight:900;
           cursor:pointer;
+          box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
         }
 
         .modalGallery{
@@ -576,7 +604,6 @@ function Portfolio() {
         }
 
         .modalGallery img:hover{
-          transform:scale(1.04);
           box-shadow:0 0 35px #00e5ff;
         }
 
@@ -603,16 +630,30 @@ function Portfolio() {
           box-shadow:0 0 80px #00e5ff,0 0 160px #ff00cc;
         }
 
-        {
-         .imageTopBar{
-  position:fixed;
-  top:25px;
-  right:25px;
-  z-index:100000;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+        .imageTopBar{
+          position:fixed;
+          top:25px;
+          right:25px;
+          z-index:100000;
+          display:flex;
+          align-items:center;
+          gap:12px;
+        }
+
+        .bigImageClose{
+          width:55px;
+          height:55px;
+          border-radius:50%;
+          border:none;
+          background:linear-gradient(135deg,#00e5ff,#ff00cc,#ff9900);
+          color:white;
+          font-size:30px;
+          font-weight:900;
+          cursor:pointer;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
         }
 
         .imageCounter{
@@ -643,6 +684,30 @@ function Portfolio() {
         .leftArrow{left:35px;}
         .rightArrow{right:35px;}
 
+        .caseGrid{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+          gap:18px;
+          margin-top:28px;
+        }
+
+        .caseBox{
+          padding:22px;
+          border-radius:22px;
+          background:rgba(255,255,255,.06);
+          border:1px solid rgba(255,255,255,.12);
+        }
+
+        .caseBox h3{
+          color:#00e5ff;
+          margin-bottom:10px;
+        }
+
+        .caseBox p{
+          color:#d4d4e2;
+          line-height:1.6;
+        }
+
         @keyframes move{
           0%{background-position:0% 50%}
           50%{background-position:100% 50%}
@@ -656,160 +721,126 @@ function Portfolio() {
         }
 
         @media(max-width:900px){
-  .container{
-    width:92%;
-  }
-
-  nav{
-    position:relative;
-    top:0;
-    flex-direction:column;
-    gap:18px;
-    border-radius:28px;
-    padding:20px;
-  }
-
-  nav div:last-child{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px;
-  }
-
-  nav a{
-    margin:0;
-    font-size:12px;
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    min-height:auto;
-    padding:45px 0;
-    gap:35px;
-  }
-
-  h1{
-    font-size:48px;
-    line-height:1;
-  }
-
-  h2{
-    font-size:42px;
-  }
-
-  .text,
-  .aboutText{
-    font-size:17px;
-  }
-
-  .photoBox{
-    max-width:420px;
-    margin:auto;
-  }
-
-  section{
-    padding:60px 0;
-  }
-
-  .glass{
-    padding:25px;
-    border-radius:24px;
-  }
-
-  .skillsWrap{
-    gap:10px;
-  }
-
-  .skillChip{
-    padding:12px 16px;
-    font-size:14px;
-  }
-
-  .projectGrid{
-    grid-template-columns:1fr;
-  }
-
-  .projectCard img{
-    height:230px;
-  }
-
-  .contact{
-    grid-template-columns:1fr;
-  }
-
-  .modal{
-    width:96vw;
-    padding:20px;
-  }
-
-  .modalHeader{
-    flex-direction:column;
-  }
-
-  .modalGallery{
-    grid-template-columns:1fr;
-  }
-
-  .modalGallery img{
-    height:auto;
-    max-height:70vh;
-  }
-
-  .bigImageBox img{
-    max-width:92vw;
-    max-height:75vh;
-  }
-
-  .imageArrow{
-    width:48px;
-    height:48px;
-    font-size:38px;
-  }
-
-  .leftArrow{
-    left:10px;
-  }
-
-  .rightArrow{
-    right:10px;
-  }
-
-  .imageTopBar{
-    top:10px;
-    gap:8px;
-  }
-
- .bigImageClose{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  border:none;
-  background:linear-gradient(135deg,#00e5ff,#ff00cc,#ff9900);
-  color:white;
-  font-size:30px;
-  font-weight:900;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 30px #00e5ff,0 0 60px #ff00cc;
-}
-}
-          .hero,.contact{
-            grid-template-columns:1fr;
-          }
-
-          h1{
-            font-size:58px;
+          .container{
+            width:92%;
+            max-width:100%;
+            padding:0 8px;
           }
 
           nav{
+            position:relative;
+            top:0;
             flex-direction:column;
-            gap:20px;
+            gap:14px;
+            padding:18px;
+            border-radius:25px;
+          }
+
+          nav div:last-child{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:12px;
           }
 
           nav a{
-            margin:0 10px;
+            margin:0;
+            font-size:12px;
+          }
+
+          .hero{
+            grid-template-columns:1fr;
+            gap:35px;
+            min-height:auto;
+            padding:45px 0;
+          }
+
+          .photoBox{
+            width:100%;
+            max-width:360px;
+            margin:auto;
+          }
+
+          h1{
+            font-size:48px;
+            line-height:1;
+          }
+
+          h2{
+            font-size:38px;
+          }
+
+          .text,.aboutText{
+            font-size:16px;
+          }
+
+          section{
+            padding:60px 0;
+          }
+
+          .glass{
+            padding:25px;
+          }
+
+          .skillChip{
+            padding:12px 16px;
+            font-size:14px;
+          }
+
+          .projectGrid{
+            grid-template-columns:1fr;
+          }
+
+          .contact{
+            grid-template-columns:1fr;
+          }
+
+          .modal{
+            width:95vw;
+            padding:20px;
+          }
+
+          .modalHeader{
+            flex-direction:column;
+          }
+
+          .modalGallery{
+            grid-template-columns:1fr;
+          }
+
+          .modalGallery img{
+            height:auto;
+            max-height:60vh;
+          }
+
+          .bigImageBox img{
+            max-width:90vw;
+            max-height:70vh;
+          }
+
+          .imageArrow{
+            width:45px;
+            height:45px;
+            font-size:34px;
+          }
+
+          .leftArrow{left:8px;}
+          .rightArrow{right:8px;}
+
+          .imageTopBar{
+            top:14px;
+            right:14px;
+          }
+
+          .bigImageClose{
+            width:46px;
+            height:46px;
+            font-size:25px;
+          }
+
+          .imageCounter{
+            padding:10px 14px;
+            font-size:12px;
           }
         }
       `}</style>
@@ -1013,8 +1044,27 @@ function Portfolio() {
               </div>
 
               <button className="closeBtn" onClick={() => setSelectedProject(null)}>
-                X
+                ✕
               </button>
+            </div>
+
+            <p className="aboutText">{selectedProject.desc}</p>
+
+            <div className="caseGrid">
+              <div className="caseBox">
+                <h3>Problem</h3>
+                <p>{selectedProject.problem}</p>
+              </div>
+
+              <div className="caseBox">
+                <h3>Design Process</h3>
+                <p>{selectedProject.process}</p>
+              </div>
+
+              <div className="caseBox">
+                <h3>What I Learned</h3>
+                <p>{selectedProject.learned}</p>
+              </div>
             </div>
 
             <div className="modalGallery">
@@ -1027,10 +1077,6 @@ function Portfolio() {
                 />
               ))}
             </div>
-
-            <p className="aboutText" style={{ marginTop: "30px" }}>
-              {selectedProject.desc}
-            </p>
           </div>
         </div>
       )}
@@ -1040,9 +1086,8 @@ function Portfolio() {
           <div className="bigImageBox" onClick={(e) => e.stopPropagation()}>
             <div className="imageTopBar">
               <button className="bigImageClose" onClick={() => setSelectedImage(null)}>
-  ✕
-</button>
-              
+                ✕
+              </button>
 
               <div className="imageCounter">
                 {currentIndex + 1} / {selectedProject.images.length}
