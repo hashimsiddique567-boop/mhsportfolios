@@ -19,6 +19,10 @@ const projects = [
     tag: "SolidWorks • Assembly • Technical Drawings",
     desc: "Adjustable desk lamp CAD project including 3D modelling, assembly design, technical drawings and manufacturability.",
     stats: ["18+ Hours", "9 CAD Images", "Assembly Design", "Technical Drawings"],
+    tools: "SolidWorks • CAD Assemblies • Technical Drawings",
+    time: "18+ hours",
+    challenge: "Creating smooth adjustability while keeping the lamp stable and realistic to manufacture.",
+    sheet: "/project-sheets/adjustable-lamp.pdf",
     problem: "The design challenge was to create an adjustable lamp that could be positioned easily while remaining stable and practical for everyday use.",
     process: "I developed the lamp through CAD modelling, component design, assembly planning and technical drawings. I considered movement, stability and how the parts could be manufactured.",
     learned: "This project improved my understanding of assemblies, movement mechanisms, component relationships and designing products with real use in mind.",
@@ -39,6 +43,10 @@ const projects = [
     tag: "CAD Design • Mechanism • PLA Parts",
     desc: "Adjustable phone stand with component modelling, assembly development and engineering drawings.",
     stats: ["Adjustable Mechanism", "8 CAD Images", "Product Design", "CAD Parts"],
+    tools: "SolidWorks • Product Design • CAD Components",
+    time: "12+ hours",
+    challenge: "Making the stand adjustable while keeping it strong enough to support a phone securely.",
+    sheet: "/project-sheets/phone-stand.pdf",
     problem: "The aim was to design a practical phone stand that could support a phone at different viewing angles while staying strong and stable.",
     process: "I created CAD parts, tested the shape and structure, developed the assembly and produced drawings showing how the product would work.",
     learned: "This helped improve my CAD modelling, product design thinking and understanding of simple adjustable mechanisms.",
@@ -60,6 +68,10 @@ const projects = [
     tag: "Hinge Mechanism • Product Design",
     desc: "Foldable piano stool and hinge mechanism with detailed CAD development and manufacturing considerations.",
     stats: ["Hinge Design", "9 CAD Images", "Folding Mechanism", "Assembly Work"],
+    tools: "SolidWorks • Hinge Design • Assembly Modelling",
+    time: "16+ hours",
+    challenge: "Designing the hinge movement so the stool could fold correctly while staying practical.",
+    sheet: "/project-sheets/piano-stool.pdf",
     problem: "The challenge was to design a folding stool mechanism that could move correctly, support weight and remain practical to manufacture.",
     process: "I focused on the hinge mechanism, component relationships, foldable movement and the structural design of the stool.",
     learned: "This improved my understanding of hinge design, mechanical movement, assemblies and product function.",
@@ -80,6 +92,10 @@ const projects = [
     tag: "Problem Solving • Optimisation • Testing",
     desc: "Engineering design challenge work involving concept sketches, CAD modelling, redesign, optimisation and validation.",
     stats: ["Problem Solving", "8 CAD Images", "Redesign", "Testing Ideas"],
+    tools: "Concept Sketching • CAD Redesign • Optimisation",
+    time: "10+ hours",
+    challenge: "Identifying design weaknesses and improving the solution through practical redesign.",
+    sheet: "/project-sheets/design-problems.pdf",
     problem: "This work focused on solving design problems by identifying weaknesses and improving the product through redesign.",
     process: "I used sketches, CAD modelling, testing ideas and optimisation to develop better engineering solutions.",
     learned: "This strengthened my problem-solving, creative thinking and ability to improve designs based on practical requirements.",
@@ -247,6 +263,7 @@ function Portfolio() {
 
         .site{
           min-height:100vh;
+          position:relative;
           background:
             radial-gradient(circle at 12% 18%, rgba(0,229,255,.42), transparent 30%),
             radial-gradient(circle at 88% 12%, rgba(255,0,204,.38), transparent 30%),
@@ -255,8 +272,22 @@ function Portfolio() {
           overflow-x:hidden;
         }
 
+        .particles{
+          position:fixed;
+          inset:0;
+          pointer-events:none;
+          z-index:0;
+          background-image:
+            radial-gradient(circle, rgba(0,229,255,.35) 1px, transparent 1px),
+            radial-gradient(circle, rgba(255,0,204,.25) 1px, transparent 1px);
+          background-size:70px 70px,110px 110px;
+          opacity:.35;
+        }
+
         .container{
           width:90%;
+          position:relative;
+          z-index:1;
           max-width:1400px;
           margin:auto;
         }
@@ -341,6 +372,45 @@ function Portfolio() {
           gap:20px;
           margin-top:35px;
           flex-wrap:wrap;
+        }
+
+        .heroLinks{
+          display:flex;
+          gap:14px;
+          flex-wrap:wrap;
+          margin-top:22px;
+        }
+
+        .miniLink{
+          padding:12px 18px;
+          border-radius:999px;
+          color:white;
+          text-decoration:none;
+          font-weight:900;
+          border:1px solid rgba(255,255,255,.18);
+          background:rgba(255,255,255,.07);
+          box-shadow:0 0 22px rgba(0,229,255,.16);
+        }
+
+        .infoStrip{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+          gap:18px;
+          margin-top:35px;
+        }
+
+        .infoCard{
+          padding:22px;
+          border-radius:24px;
+          background:rgba(255,255,255,.07);
+          border:1px solid rgba(255,255,255,.14);
+          box-shadow:0 0 28px rgba(0,229,255,.14);
+        }
+
+        .infoCard strong{
+          color:#00e5ff;
+          display:block;
+          margin-bottom:8px;
         }
 
         .btn,.sendEmail{
@@ -615,6 +685,24 @@ function Portfolio() {
           line-height:1.6;
         }
 
+        .projectSheet{
+          display:inline-block;
+          margin-top:24px;
+          padding:15px 24px;
+          border-radius:16px;
+          color:white;
+          text-decoration:none;
+          font-weight:900;
+          background:linear-gradient(90deg,#00e5ff,#ff00cc,#ff9900);
+          box-shadow:0 0 35px rgba(255,0,204,.35);
+        }
+
+        .footerQuote{
+          margin-top:16px;
+          color:#00e5ff;
+          font-weight:900;
+        }
+
         .bigImageOverlay{
           z-index:1000;
         }
@@ -830,6 +918,7 @@ function Portfolio() {
       `}</style>
 
       <div className="scrollProgress"></div>
+      <div className="particles"></div>
 
       <div className="container">
         <nav>
@@ -863,6 +952,18 @@ function Portfolio() {
                 VIEW PROJECTS
               </a>
             </div>
+
+            <div className="heroLinks">
+              <a className="miniLink" href="mailto:hashimsiddique567@gmail.com">Email Me</a>
+              <a className="miniLink" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="miniLink" href="https://github.com/hashimsiddique567-boop" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+
+            <div className="infoStrip">
+              <div className="infoCard"><strong>Studying</strong>Level 3 Engineering</div>
+              <div className="infoCard"><strong>Seeking</strong>Mechanical Engineering Apprenticeship</div>
+              <div className="infoCard"><strong>Location</strong>Lancashire, UK</div>
+            </div>
           </div>
 
           <div className="photoBox">
@@ -874,6 +975,11 @@ function Portfolio() {
 
         <section id="seeking">
           <div className="glass">
+            <div className="infoStrip" style={{ marginTop: 0, marginBottom: "35px" }}>
+              <div className="infoCard"><strong>Availability</strong>Open to apprenticeship opportunities</div>
+              <div className="infoCard"><strong>Focus</strong>Mechanical Engineering • CAD • Workshop Skills</div>
+              <div className="infoCard"><strong>Best Contact</strong>hashimsiddique567@gmail.com</div>
+            </div>
             <div className="sectionLabel">Currently Seeking</div>
             <h2>Mechanical Engineering Apprenticeship</h2>
 
@@ -1015,6 +1121,7 @@ function Portfolio() {
 
         <footer>
           © 2026 Mohammad Hashim Siddique. All rights reserved.
+          <div className="footerQuote">“Engineering is turning ideas into practical solutions.”</div>
         </footer>
       </div>
 
@@ -1042,6 +1149,21 @@ function Portfolio() {
 
             <div className="caseGrid">
               <div className="caseBox">
+                <h3>Tools Used</h3>
+                <p>{selectedProject.tools}</p>
+              </div>
+
+              <div className="caseBox">
+                <h3>Time Spent</h3>
+                <p>{selectedProject.time}</p>
+              </div>
+
+              <div className="caseBox">
+                <h3>Biggest Challenge</h3>
+                <p>{selectedProject.challenge}</p>
+              </div>
+
+              <div className="caseBox">
                 <h3>Problem</h3>
                 <p>{selectedProject.problem}</p>
               </div>
@@ -1056,6 +1178,10 @@ function Portfolio() {
                 <p>{selectedProject.learned}</p>
               </div>
             </div>
+
+            <a className="projectSheet" href={selectedProject.sheet} download>
+              Download Project Sheet
+            </a>
 
             <div className="modalGallery">
               {selectedProject.images.map((img, index) => (
