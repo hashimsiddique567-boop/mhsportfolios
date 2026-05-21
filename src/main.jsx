@@ -742,6 +742,54 @@ function Portfolio() {
           font-weight:900;
         }
 
+        .filterBar{
+          display:flex;
+          flex-wrap:wrap;
+          gap:12px;
+          margin-bottom:30px;
+        }
+
+        .filterBtn{
+          padding:13px 20px;
+          border-radius:999px;
+          border:1px solid rgba(255,255,255,.16);
+          background:rgba(255,255,255,.07);
+          color:white;
+          font-weight:900;
+          box-shadow:0 0 18px rgba(0,229,255,.12);
+        }
+
+        .profileMiniCard{
+          display:grid;
+          grid-template-columns:90px 1fr;
+          gap:20px;
+          align-items:center;
+          padding:24px;
+          border-radius:28px;
+          background:rgba(255,255,255,.07);
+          border:1px solid rgba(255,255,255,.14);
+          box-shadow:0 0 28px rgba(255,0,204,.14);
+        }
+
+        .profileMiniCard img{
+          width:90px;
+          height:90px;
+          object-fit:cover;
+          border-radius:50%;
+          border:3px solid #00e5ff;
+          box-shadow:0 0 30px rgba(0,229,255,.45);
+        }
+
+        .profileMiniCard h3{
+          font-size:26px;
+          margin-bottom:8px;
+        }
+
+        .profileMiniCard p{
+          color:#d4d4e2;
+          line-height:1.6;
+        }
+
         .timeline{
           display:grid;
           gap:18px;
@@ -998,6 +1046,15 @@ function Portfolio() {
           .timelineItem{
             grid-template-columns:1fr;
           }
+
+          .profileMiniCard{
+            grid-template-columns:1fr;
+            text-align:center;
+          }
+
+          .profileMiniCard img{
+            margin:auto;
+          }
         }
       `}</style>
 
@@ -1122,6 +1179,62 @@ function Portfolio() {
           </div>
         </section>
 
+        <section id="qualifications">
+          <div className="sectionLabel">Qualifications</div>
+          <h2>Education & Certifications</h2>
+
+          <div className="skillsWrap">
+            <div className="skillChip">Level 3 Engineering</div>
+            <div className="skillChip">Level 2 Mechanical Pathway</div>
+            <div className="skillChip">GCSE Mathematics</div>
+            <div className="skillChip">GCSE Science</div>
+            <div className="skillChip">Workshop Safety</div>
+            <div className="skillChip">Technical Drawing Basics</div>
+          </div>
+        </section>
+
+        <section id="learning">
+          <div className="sectionLabel">Currently Learning</div>
+          <h2>Developing My Engineering Skills</h2>
+
+          <div className="glass">
+            <p className="aboutText">
+              I am currently improving my understanding of advanced CAD assemblies, manufacturing processes, mechanical systems and practical workshop problem-solving.
+            </p>
+
+            <div className="skillsWrap">
+              <div className="skillChip">Advanced CAD Assemblies</div>
+              <div className="skillChip">Manufacturing Processes</div>
+              <div className="skillChip">Mechanical Systems</div>
+              <div className="skillChip">Workshop Practice</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="why-engineering">
+          <div className="sectionLabel">Why Mechanical Engineering?</div>
+          <h2>Why I Chose Engineering</h2>
+
+          <div className="glass">
+            <p className="aboutText">
+              I enjoy turning ideas into practical solutions and seeing a design develop from an early concept into a working product. Mechanical engineering interests me because it combines creativity, technical thinking and real-world problem solving.
+            </p>
+          </div>
+        </section>
+
+        <section id="goals">
+          <div className="sectionLabel">Apprenticeship Goals</div>
+          <h2>What I Want To Achieve</h2>
+
+          <div className="skillsWrap">
+            <div className="skillChip">Gain industry experience</div>
+            <div className="skillChip">Learn from engineers</div>
+            <div className="skillChip">Develop CAD skills</div>
+            <div className="skillChip">Improve workshop confidence</div>
+            <div className="skillChip">Build a long-term engineering career</div>
+          </div>
+        </section>
+
         <section id="timeline">
           <div className="sectionLabel">Progression</div>
           <h2>Engineering Timeline</h2>
@@ -1152,6 +1265,13 @@ function Portfolio() {
         <section id="projects">
           <div className="sectionLabel">My Work</div>
           <h2>Featured Engineering Projects</h2>
+
+          <div className="filterBar">
+            <button className="filterBtn">All</button>
+            <button className="filterBtn">CAD</button>
+            <button className="filterBtn">Mechanisms</button>
+            <button className="filterBtn">Product Design</button>
+          </div>
 
           <div className="projectGrid">
             {projects.map((project, index) => (
@@ -1189,6 +1309,20 @@ function Portfolio() {
             <p className="aboutText">
               <strong>Next Step:</strong> Seeking a Mechanical Engineering Apprenticeship to develop practical industry experience.
             </p>
+          </div>
+        </section>
+
+        <section id="profile-card">
+          <div className="sectionLabel">Profile</div>
+          <h2>Professional Profile</h2>
+
+          <div className="profileMiniCard">
+            <img src="/profile/photo.png" alt="Mohammad Hashim Siddique" />
+            <div>
+              <h3>Mohammad Hashim Siddique</h3>
+              <p>Mechanical Engineering student focused on CAD design, product development and practical engineering problem-solving.</p>
+              <a className="miniLink" href="https://www.linkedin.com" target="_blank" rel="noreferrer">View LinkedIn</a>
+            </div>
           </div>
         </section>
 
